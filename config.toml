@@ -1,0 +1,5 @@
+baseURL = "https://blog.hoge.cc/"
+languageCode = "ja-JP"
+title = "nomeaning blog"
+theme = "hugo-bootstrap"
+
