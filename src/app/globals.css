@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.markdown-body ol {
+    list-style-type: decimal;
+}
+
+.markdown-body ul {
+    list-style-type: circle;
+}
