@@ -4,32 +4,22 @@ import remarkRehype from "remark-rehype";
 import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
 import rehypeHighlight from "rehype-highlight";
-import math from "remark-math";
+import remarkMath from "remark-math";
 import rehypeReact from "rehype-react";
 import rehypeRaw from "rehype-raw";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { TwitterPreview } from "@/app/_components/twitter-preview";
-import rehypeStringify from "rehype-stringify";
+import { Mermaid } from "@/app/_components/mermaid";
+import type { ReactNode } from "react";
 
 export default async function markdownToHtml(markdown: string) {
-	const r2 = await unified()
+	const result = await unified()
 		.use(remarkParse, {})
 		.use(remarkGfm)
-		.use(math)
+		.use(remarkMath)
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeKatex)
-		.use(rehypeHighlight)
-		.use(rehypeStringify, { allowDangerousHtml: true })
-		.process(markdown);
-	console.log(r2);
-
-	const result = await unified()
-		.use(remarkParse)
-		.use(remarkGfm)
-		.use(math)
-		.use(remarkRehype, { allowDangerousHtml: true })
-		.use(rehypeKatex)
-		.use(rehypeHighlight)
+		.use(rehypeHighlight, { plainText: ["mermaid"] })
 		.use(rehypeRaw)
 		.use(rehypeReact, {
 			jsx,
@@ -37,10 +27,17 @@ export default async function markdownToHtml(markdown: string) {
 			Fragment,
 			components: {
 				"x-twitter-preview": TwitterPreview,
+				code: (props: {
+					className: string;
+					children: ReactNode | ReactNode[] | undefined;
+				}) => {
+					if (props.className?.includes("language-mermaid")) {
+						return <Mermaid {...props} />;
+					}
+					return <code {...props} />;
+				},
 			},
 		} as unknown as boolean)
 		.process(markdown);
-	console.log(result.result.props.children);
-
 	return result;
 }
