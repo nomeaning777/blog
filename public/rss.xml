@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>nomeaning blog</title>
+        <link>https://blog.hoge.cc</link>
+        <description>undefined</description>
+        <lastBuildDate>Mon, 19 May 2025 15:00:36 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>ja</language>
+        <copyright>Copyright (c) 2024 nomeaning</copyright>
+        <item>
+            <title><![CDATA[XigmaNASにtailscaledをインストールする方法]]></title>
+            <link>https://blog.hoge.cc/posts/xigmanas-tailscale</link>
+            <guid>https://blog.hoge.cc/posts/xigmanas-tailscale</guid>
+            <pubDate>Mon, 19 May 2025 09:53:00 GMT</pubDate>
+            <description><![CDATA[
+FreeBSDベースのNASディストリビューション、XigmaNASにTailscaleのデーモン tailscaled を入れたときの自分用の手順メモ。
+
+まず前提として
+
+
+XigmaNASはルートファイルシステム（/）がRAMディスクになっていて、再起動すると初期化される。つまり、pkg install で直接インストールしても再起動で消えてしまう。(そうしない設定もある)
+
+
+設定ファイルや永続化したいデータは /mnt 配下などのストレージに保存する必要あり。恒久的なインストールは非推奨（というか意味がない）ので、その前提で進める。
+
+セットアップ手順
+
+1. tailscale用の保存場所を作る
+
+
+ZFSのDatasetを作成してtailscaleの実行ファイル・ステートの保存先を作成する。わたしは /mnt/main/tailscale を保存場所とした。
+
+2. tailscaleをダウンロード
+
+
+pkg fetch tailscale
+
+3. ダウンロードしたpkgを展開
+]]></description>
+        </item>
+        <item>
+            <title><![CDATA[HMDでの作業環境を作ったら意外と良い感じだった話]]></title>
+            <link>https://blog.hoge.cc/posts/workspace-on-hmd</link>
+            <guid>https://blog.hoge.cc/posts/workspace-on-hmd</guid>
+            <pubDate>Sun, 15 Dec 2024 10:21:00 GMT</pubDate>
+            <description><![CDATA[
+ここ最近(といっても結構前からだが)HMDや眼鏡型ARデバイスを従来のディスプレイの代わりにして使用する動きが広がっています。わたしも実際に試してみたところ、特にHMDの使用感は良好で、自宅では(ゲーム時を除いて)物理モニターを使うことはなくなりました。
+
+HMDの良い点
+
+
+HMDの最大の特徴は、仮想空間内に複数の大型ディスプレイを自由に配置できる点です。必要に応じて画面の位置や大きさを柔軟に調整できるため、作業内容に合わせた最適な環境を作り出すことが可能です。
+
+
+また、視界がディスプレイに限定されることで、外部からの視覚的な干渉が少なく、作業への集中力が高まります。必要なキーボード・マウスはパススルーして表示されます。さらに、バーチャル環境を活用することで、カフェや宇宙空間など、様々な仮想の作業環境に身を置くことができ、効果的な気分転換も可能です。
+
+
+携帯性に関しては、40インチクラスの物理的なディスプレイと比較すると、明らかに持ち運びが容易です。ただし、HMD本体は比較的コンパクトなものの、装着に必要なストラップ類を含めるとサイズが大きくなるという課題もあります。大き]]></description>
+        </item>
+        <item>
+            <title><![CDATA[ISUCON 14 参加記]]></title>
+            <link>https://blog.hoge.cc/posts/isucon-14</link>
+            <guid>https://blog.hoge.cc/posts/isucon-14</guid>
+            <pubDate>Sat, 14 Dec 2024 01:21:00 GMT</pubDate>
+            <description><![CDATA[
+12/08に開催されたISUCON 14に@icchy、@whywaitaとのチーム『第9西東京市』で参加し、総合2位を獲得しました。 ISUCON 8本戦以来となる上位入賞を果たすことができ、感無量です。
+
+タイムライン
+
+
+image.png
+
+10時～12時 (DBの分離とインデックスの設定) 900pt → 5000pt
+
+
+初動としては、whywaitaさんにAWSの初期設定やMySQLのスロークエリやKataribeの設定をしてもらいつつ、わたしとicchyはコンテストのマニュアルの読み込みを行なった。その後、わたしはクエリを読んでのINDEXの設定と今後のクエリ変更を楽にするために SELECT * をカラム名を明示する形で書き変える変更を行ないました。
+
+
+早い段階でMySQLの負荷が大きな問題になりそうなことが分かっ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[HITCON CTF 2024 Quals Writeup]]></title>
+            <link>https://blog.hoge.cc/posts/hitcon-ctf-2024-quals</link>
+            <guid>https://blog.hoge.cc/posts/hitcon-ctf-2024-quals</guid>
+            <pubDate>Tue, 16 Jul 2024 11:53:00 GMT</pubDate>
+            <description><![CDATA[
+I participated in HITCON CTF 2024 Quals as a member of TokyoWesterns. Our team placed 4th and advanced to the finals.
+I worked with other team members to solve Flag Reader (misc), Gleamering Star (crypto, web), and Gleamering Hope (pwn).
+
+Writeup
+
+Flag Reader (misc 271pts)
+
+
+The challenge files included the server's source code. Here's a basic overview of how it worked:
+
+It receives a base64 encoded tar file as input.
+It uses Python's [tarfile](https://docs.python.org/3/library/tar]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Midnight Sun CTF 2024 Finals]]></title>
+            <link>https://blog.hoge.cc/posts/midnight-sun-ctf-2024-finals</link>
+            <guid>https://blog.hoge.cc/posts/midnight-sun-ctf-2024-finals</guid>
+            <pubDate>Thu, 20 Jun 2024 19:15:00 GMT</pubDate>
+            <description><![CDATA[
+On June 15th and 16th, I participated in the Midnight Sun CTF 2024 Finals in Stockholm as a member of TokyoWesterns, and we won first place.
+
+Writeups
+
+☆concept43 (Reversing)
+
+
+It was a program that repeatedly performed multiplication and exponentiation of a 40x40 matrix, checking if the results matched the expected outcome. The program was not obfuscated, and it could be eas]]></description>
+        </item>
+        <item>
+            <title><![CDATA[zer0pts CTF Writeup]]></title>
+            <link>https://blog.hoge.cc/posts/zer0pts-ctf-writeup</link>
+            <guid>https://blog.hoge.cc/posts/zer0pts-ctf-writeup</guid>
+            <pubDate>Mon, 09 Mar 2020 13:55:00 GMT</pubDate>
+            <description><![CDATA[
+チーム TokyoWesterns で参加。最終 3 位。わたしは diysig 以外の暗号問題を解いた。
+
+ROR (Crypto 260pts)
+
+
+問題のコードでは、
+
+
+$N=2^{k_1}3^{k_2}7^{k_3} (k_1, k_2, k_3 は123以上の456以下の未知の整数) $, $eは271828以上314159以下の未知の整数$ として、 $i = 0, \cdots, mのビット数 - 1$ に対して$\mathrm{ROR}(m,i)^e \bmod n$を出力している。
+
+
+$N$は偶数であることから、 $\mathrm{ROR}(m,i)^e \bmod n \bmod 2 = \mathrm{ROR}(m,i) \bmod 2$となる。
+したがって、下位 1bit を順に見ていくと元もメッセージ m が求まる。
+
+
+irb(main):001:0> [File.read('chall.txt').lines.map{|a|a.to_i%2}.join.reverse.to_i(2).to_s(16)].pack('H*]]></description>
+        </item>
+        <item>
+            <title><![CDATA[SECCON CTF 2019 Quals Writeup]]></title>
+            <link>https://blog.hoge.cc/posts/seccon-ctf-2019-quals-writeup</link>
+            <guid>https://blog.hoge.cc/posts/seccon-ctf-2019-quals-writeup</guid>
+            <pubDate>Mon, 21 Oct 2019 12:44:00 GMT</pubDate>
+            <description><![CDATA[
+個人で参加して 35 位。取り組めた時間が少なかったとはいえ、もうちょっとフラグを取りたかったところ。
+
+Welcome(Misc 50pts)
+
+
+IRC に入ると Topic 上にフラグがある。
+
+
+SECCON{Welcome to the SECCON 2019 Online CTF}
+
+Thank you for playing!(Misc 50pts)
+
+
+問題文にフラグが書いてある。この手の問題はアンケートが付いていることが多い印象だけど、今回はなし。
+
+
+SECCON{We have done all the challenges. Thank you!}
+
+Beeeeeeeeeer(Misc 110pt)
+
+
+bash スクリプト。エスケープやシェル置換で読みづらくしているが、セミコロンで改行したり気合で解析していった。
+
+
+解析結果は以下の通り
+https://gist.github.com/nomeaning777/99a24af4ed90355ba7cf567278f6b8f9
+
+
+最終的に一つ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Google Capture The Flag 2019 (Quals) Writeup]]></title>
+            <link>https://blog.hoge.cc/posts/google-ctf-2019-quals-writeup</link>
+            <guid>https://blog.hoge.cc/posts/google-ctf-2019-quals-writeup</guid>
+            <pubDate>Wed, 26 Jun 2019 20:31:00 GMT</pubDate>
+            <description><![CDATA[
+Quantum Key Distribution (Crypto 92pts)
+
+
+BB84) がサーバー上に実装されている。ユーザーは鍵配送の時の基底と観測した基底を送信すると、サーバーはサーバー側の基底と、“announcement”というフラグを暗号化した鍵をエンコードしたものが返される。
+ソースコードがないため、“announcement”がどのようにエンコードされているか不明だったが、鍵配送の結果の共有鍵とフラグの暗号鍵を XOR したものが正解であった。
+
+
+def rotate(c)
+    c * Complex(0.707, -0.707)
+end
+
+def mesure(rx_qubits, basis)
+    ret = ''
+    rx_qubits.zip(ba]]></description>
+        </item>
+        <item>
+            <title><![CDATA[BCTF 2019 Writeup]]></title>
+            <link>https://blog.hoge.cc/posts/bctf2019-writeup</link>
+            <guid>https://blog.hoge.cc/posts/bctf2019-writeup</guid>
+            <pubDate>Fri, 07 Jun 2019 13:46:00 GMT</pubDate>
+            <description><![CDATA[
+trispl
+
+
+3 つの LSFR シーケンス r1, r2, r3 から計算される列が与えられるので、r1, r2, r3 の初期状態を求める問題。
+
+r1 の復元
+
+
+3 つの LSFR シーケンス r1, r2, r3 の出力と、最終的な出力 output を比較すると次のようになる。
+
+
+| r1 | r2 | r3 | output |
+| -- | -- | -- | ------ |
+| 0  | 0  | 0  | 0      |
+| 0  | 0  | 1  | 1      |
+| 0  | 1  | 0  | 0      |
+| 0  | 1  | 1  | 0      |
+| 1  | 0  | 0  | 0      |
+| 1  | 0  | 1  | 1      |
+| 1  | 1  | 0  | 1      |
+| 1  | 1  | 1  | 1      |
+
+
+このことから、「r1 と output が異なる確率」及び「r3 と output が異なる確率」はそれぞれ 1/4 と小さいことが分かる。
+
+
+ここで]]></description>
+        </item>
+        <item>
+            <title><![CDATA[SECCON Beginners CTF 2019 Writeup]]></title>
+            <link>https://blog.hoge.cc/posts/seccon-beginers-ctf-2019-writeup</link>
+            <guid>https://blog.hoge.cc/posts/seccon-beginers-ctf-2019-writeup</guid>
+            <pubDate>Sun, 26 May 2019 13:47:00 GMT</pubDate>
+            <description><![CDATA[
+個人で参加して 3 位。secconpass のフラグの Guess に失敗した結果 2 位を逃したのがちょっとだけ悔しい。
+Pwn と Web では知らないことが問題に出てきて勉強になった。
+
+[warmup] Ramen (Web 73pts)
+
+
+シンプルな SQLi があり、UNION を利用することで任意のカラム数 2 のクエリを実行できる。
+information_schema からテーブル構造をリークしないといけないのかもしれないのだけど、とりあえず flag テーブルの flag カラムを取得したら、実際にフラグが存在した。
+
+
+Web サイトに送信した文字列は以下の通り
+
+
+' UNION ALL SELECT flag, 1 FROM flag; --
+
+katsudon (Web 101pts)
+
+
+Rails のバージョンから CVE-2019-5418 と推測したのは良いが、フラグページで得られた署名付き文字列の前半の Base64 をデコードしてみたら平文で保存されていた。
+
+
+$ echo -n BAh]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Harekaze CTF 2019 Writeup]]></title>
+            <link>https://blog.hoge.cc/posts/harekaze-ctf-2019-writeup</link>
+            <guid>https://blog.hoge.cc/posts/harekaze-ctf-2019-writeup</guid>
+            <pubDate>Thu, 23 May 2019 10:37:00 GMT</pubDate>
+            <description><![CDATA[
+ONCE UPON A TIME (Crypto 100pts)
+
+
+Mod 251 の上で連立方程式を解く。左から掛けたか右から掛けたかは分からないので両方試す。
+
+
+enc = 'ea5929e97ef77806bb43ec303f304673de19f7e68eddc347f3373ee4c0b662bc37764f74cbb8bb9219e7b5dbc59ca4a42018'
+enc = enc.decode('hex')
+G = GF(251)
+M = Matrix(G, 5)
+for i in xrange(0,25):
+    M[i // 5, i % 5] = ord(enc[i])
+
+m2 = [[1,3,2,9,4], [0,2,7,8,4], [3,4,1,9,4], [6,5,3,-1,4], [1,4,5,3,5]]
+m2 = Matrix(G, m2)
+ret= ''
+for row in M / m2:
+    ret += ''.join(map(lambda a: chr(int(a)), list(row)))
+
+M = ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[ISUCON8 本戦 参加記録]]></title>
+            <link>https://blog.hoge.cc/posts/isucon-2018</link>
+            <guid>https://blog.hoge.cc/posts/isucon-2018</guid>
+            <pubDate>Sat, 03 Nov 2018 23:01:00 GMT</pubDate>
+            <description><![CDATA[
+2018/10/20 に開催されたISUCON8本戦に，icchy，whywaitaと一緒のチーム「時差は最大の敵」で参加しました．
+わたしは主にコーディングを行い，whywaitaがインフラや環境構築を行い，icchyはその両方を行うといった感じの役割分担でした．
+
+
+基本的な方針として，遅そうだからやみくも直す，のではなく測定を行なってボトルネックになっているところや理論的に遅い原因になりうる箇所を直していくということを意識していました．
+
+
+チームメイトが書いたブログ記事があります．
+
+ISUCON8 本戦にて優勝してきました #isucon | なぜにぶろぐ
+運が良かったのでISUCON8で優勝しました - 雑記
+
+改善箇所
+
+
+時系列順に改善を行なった箇所を書いていきます．
+
+GetLatestTrade 関数にて，全件取得してから最初に]]></description>
+        </item>
+    </channel>
+</rss>
