@@ -4,16 +4,16 @@ import fs from "node:fs/promises";
 import type { ListBlockChildrenResponseResult } from "notion-to-md/build/types";
 import { URL } from "node:url";
 import path from "node:path";
-import { parseISO } from 'date-fns';
+import { parseISO } from "date-fns";
 import type { PathLike } from "node:fs";
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { Post } from "@/interfaces/post";
-import removeMarkdown from 'remove-markdown';
+import removeMarkdown from "remove-markdown";
 import { getAllPosts } from "@/lib/api";
 import yaml from "yaml";
-import { Feed, FeedOptions } from "feed";
+import { Feed, type FeedOptions } from "feed";
 
-const SITE_URL = "https://blog.hoge.cc"
+const SITE_URL = "https://blog.hoge.cc";
 
 const rssFeedOptions: FeedOptions = {
 	title: "nomeaning blog",
@@ -36,7 +36,7 @@ async function canAccess(path: PathLike): Promise<boolean> {
 // save the remote file to the public directory
 async function saveUrlToPublicDirectory(
 	slug: string,
-	urlString: string,
+	urlString: string
 ): Promise<string> {
 	const uuidRegex = /^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/;
 	const url = new URL(urlString);
@@ -71,7 +71,7 @@ async function saveUrlToPublicDirectory(
 }
 
 function imageTransformer(
-	slug: string,
+	slug: string
 ): (block: ListBlockChildrenResponseResult) => Promise<string | false> {
 	return async (block: ListBlockChildrenResponseResult) => {
 		if (!("type" in block) || block.type !== "image") {
@@ -89,16 +89,19 @@ function imageTransformer(
 			imageTitle = imageCaption;
 		} else {
 			const matches = blockContent.file.url.match(
-				/[^\/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/,
+				/[^\/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/
 			);
 			imageTitle = matches ? matches[0] : "image";
 		}
 
-		return `![${imageTitle}](${await saveUrlToPublicDirectory(slug, blockContent.file.url)})`;
+		return `![${imageTitle}](${await saveUrlToPublicDirectory(
+			slug,
+			blockContent.file.url
+		)})`;
 	};
 }
 function fileTransformer(
-	slug: string,
+	slug: string
 ): (block: ListBlockChildrenResponseResult) => Promise<string | false> {
 	return async (block: ListBlockChildrenResponseResult) => {
 		if (!("type" in block) || block.type !== "file") {
@@ -106,7 +109,8 @@ function fileTransformer(
 		}
 		const blockContent = block.file;
 		let title =
-			blockContent?.caption.map((item) => item.plain_text).join("") || "file";
+			blockContent?.caption.map((item) => item.plain_text).join("") ||
+			"file";
 		if (blockContent.type !== "file") {
 			return false;
 		}
@@ -121,7 +125,7 @@ function fileTransformer(
 
 function extractTextFromProp(
 	properties: PageObjectResponse["properties"],
-	key: string,
+	key: string
 ): string {
 	if (!properties[key]) {
 		return "";
@@ -215,7 +219,7 @@ ${mdString.parent}`;
 	for (const post of posts) {
 		feed.addItem({
 			title: post.title,
-			description: removeMarkdown((post.content || '').substring(0, 500)),
+			description: removeMarkdown((post.content || "").substring(0, 500)),
 			link: `${SITE_URL}/posts/${post.slug}`,
 			id: `${SITE_URL}/posts/${post.slug}`,
 			date: parseISO(post.date),
