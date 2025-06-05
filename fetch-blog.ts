@@ -36,7 +36,7 @@ async function canAccess(path: PathLike): Promise<boolean> {
 // save the remote file to the public directory
 async function saveUrlToPublicDirectory(
 	slug: string,
-	urlString: string
+	urlString: string,
 ): Promise<string> {
 	const uuidRegex = /^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/;
 	const url = new URL(urlString);
@@ -71,7 +71,7 @@ async function saveUrlToPublicDirectory(
 }
 
 function imageTransformer(
-	slug: string
+	slug: string,
 ): (block: ListBlockChildrenResponseResult) => Promise<string | false> {
 	return async (block: ListBlockChildrenResponseResult) => {
 		if (!("type" in block) || block.type !== "image") {
@@ -89,19 +89,19 @@ function imageTransformer(
 			imageTitle = imageCaption;
 		} else {
 			const matches = blockContent.file.url.match(
-				/[^\/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/
+				/[^\/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/,
 			);
 			imageTitle = matches ? matches[0] : "image";
 		}
 
 		return `![${imageTitle}](${await saveUrlToPublicDirectory(
 			slug,
-			blockContent.file.url
+			blockContent.file.url,
 		)})`;
 	};
 }
 function fileTransformer(
-	slug: string
+	slug: string,
 ): (block: ListBlockChildrenResponseResult) => Promise<string | false> {
 	return async (block: ListBlockChildrenResponseResult) => {
 		if (!("type" in block) || block.type !== "file") {
@@ -109,8 +109,7 @@ function fileTransformer(
 		}
 		const blockContent = block.file;
 		let title =
-			blockContent?.caption.map((item) => item.plain_text).join("") ||
-			"file";
+			blockContent?.caption.map((item) => item.plain_text).join("") || "file";
 		if (blockContent.type !== "file") {
 			return false;
 		}
@@ -125,7 +124,7 @@ function fileTransformer(
 
 function extractTextFromProp(
 	properties: PageObjectResponse["properties"],
-	key: string
+	key: string,
 ): string {
 	if (!properties[key]) {
 		return "";
