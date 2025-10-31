@@ -16,20 +16,38 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check for existing PR
+        id: check_existing_pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_COUNT=$(gh pr list --search "is:open author:app/github-actions in:title 'Update blog posts from Notion'" --json number --jq 'length')
+          if [[ "$PR_COUNT" -eq 0 ]]; then
+            echo "should_continue=true" >> $GITHUB_OUTPUT
+            echo "No existing open PR found. Proceeding with update."
+          else
+            echo "should_continue=false" >> $GITHUB_OUTPUT
+            echo "Skipping workflow: Found $PR_COUNT existing open PR(s)"
+          fi
+
       - uses: jdx/mise-action@eb2f5cb41b0a8175dad2f797e3daca6fe7795a19 # v2.4.2
+        if: steps.check_existing_pr.outputs.should_continue == 'true'
         with:
           install: true
 
       - name: Install dependencies
+        if: steps.check_existing_pr.outputs.should_continue == 'true'
         run: pnpm install --frozen-lockfile
 
       - name: Fetch latest blog posts from Notion
+        if: steps.check_existing_pr.outputs.should_continue == 'true'
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE: ${{ secrets.NOTION_DATABASE }}
         run: pnpm run fetch-blog
 
       - name: Check for changes
+        if: steps.check_existing_pr.outputs.should_continue == 'true'
         id: check_changes
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
@@ -38,22 +56,8 @@ jobs:
             echo "has_changes=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Check for existing PR
-        if: steps.check_changes.outputs.has_changes == 'true'
-        id: check_pr
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          PR_COUNT=$(gh pr list --search "is:open author:app/github-actions in:title 'Update blog posts from Notion'" --json number --jq 'length')
-          if [[ "$PR_COUNT" -eq 0 ]]; then
-            echo "should_create_pr=true" >> $GITHUB_OUTPUT
-          else
-            echo "should_create_pr=false" >> $GITHUB_OUTPUT
-            echo "Skipping PR creation: Found $PR_COUNT existing open PR(s)"
-          fi
-
       - name: Create Pull Request
-        if: steps.check_changes.outputs.has_changes == 'true' && steps.check_pr.outputs.should_create_pr == 'true'
+        if: steps.check_existing_pr.outputs.should_continue == 'true' && steps.check_changes.outputs.has_changes == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
