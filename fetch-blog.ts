@@ -1,3 +1,8 @@
+import { bootstrap } from "global-agent";
+
+// Bootstrap global-agent to use HTTP_PROXY/HTTPS_PROXY environment variables
+bootstrap();
+
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import fs from "node:fs/promises";
