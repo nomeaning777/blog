@@ -4,15 +4,42 @@
         <title>nomeaning blog</title>
         <link>https://blog.hoge.cc</link>
         <description>undefined</description>
-        <lastBuildDate>Mon, 19 May 2025 15:00:36 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 31 Oct 2025 11:52:16 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
         <copyright>Copyright (c) 2024 nomeaning</copyright>
         <item>
+            <title><![CDATA[痔瘻の手術を受けた]]></title>
+            <link>https://blog.hoge.cc/posts/2025-surgical-operation-for-ji</link>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/2025-surgical-operation-for-ji</guid>
+            <pubDate>Fri, 31 Oct 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+2025年7月頃から肛門周囲膿瘍およびそこから発生した痔瘻に悩まされ、手術を受けた。その経緯を記録しておく。
+
+
+最も重要なことは、単なる肛門科ではなく、必ず痔の専門医を受診すべきであるという点だ。
+
+肛門周囲膿瘍
+
+
+2025-07-02(水)の昼頃、肛門付近に強い痛みがあり、37.5度前後の発熱も生じたため、近所の肛門科を含む診療所を受診した。痛み止めと抗生剤の処方を受け、その後は痛みや発熱が落ち着いたため、様子を見ていた。
+
+
+しかし、07-19(土)の深夜に再発し、翌日には39度を超える発熱があった。休日であったため、翌週火曜日に再度受診した。その際に医師からは、このような場合には休日であっても受診すべきであると指摘された。切開は行わず、抗生剤と痛み止めの処方によって1週間の経過観察とすることになった。
+
+
+07-25(金)に排膿したため、急速に熱と痛みが解消した。その後2～3週間通院したが、再度悪化するまでは経過観察とされた。
+
+痔の専門医への受診
+
+
+経過観察とされたのだが、自分で症状について検討している時]]></description>
+        </item>
+        <item>
             <title><![CDATA[XigmaNASにtailscaledをインストールする方法]]></title>
             <link>https://blog.hoge.cc/posts/xigmanas-tailscale</link>
-            <guid>https://blog.hoge.cc/posts/xigmanas-tailscale</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/xigmanas-tailscale</guid>
             <pubDate>Mon, 19 May 2025 09:53:00 GMT</pubDate>
             <description><![CDATA[
 FreeBSDベースのNASディストリビューション、XigmaNASにTailscaleのデーモン tailscaled を入れたときの自分用の手順メモ。
@@ -43,7 +70,7 @@ pkg fetch tailscale
         <item>
             <title><![CDATA[HMDでの作業環境を作ったら意外と良い感じだった話]]></title>
             <link>https://blog.hoge.cc/posts/workspace-on-hmd</link>
-            <guid>https://blog.hoge.cc/posts/workspace-on-hmd</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/workspace-on-hmd</guid>
             <pubDate>Sun, 15 Dec 2024 10:21:00 GMT</pubDate>
             <description><![CDATA[
 ここ最近(といっても結構前からだが)HMDや眼鏡型ARデバイスを従来のディスプレイの代わりにして使用する動きが広がっています。わたしも実際に試してみたところ、特にHMDの使用感は良好で、自宅では(ゲーム時を除いて)物理モニターを使うことはなくなりました。
@@ -62,7 +89,7 @@ HMDの最大の特徴は、仮想空間内に複数の大型ディスプレイ�
         <item>
             <title><![CDATA[ISUCON 14 参加記]]></title>
             <link>https://blog.hoge.cc/posts/isucon-14</link>
-            <guid>https://blog.hoge.cc/posts/isucon-14</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/isucon-14</guid>
             <pubDate>Sat, 14 Dec 2024 01:21:00 GMT</pubDate>
             <description><![CDATA[
 12/08に開催されたISUCON 14に@icchy、@whywaitaとのチーム『第9西東京市』で参加し、総合2位を獲得しました。 ISUCON 8本戦以来となる上位入賞を果たすことができ、感無量です。
@@ -83,7 +110,7 @@ image.png
         <item>
             <title><![CDATA[HITCON CTF 2024 Quals Writeup]]></title>
             <link>https://blog.hoge.cc/posts/hitcon-ctf-2024-quals</link>
-            <guid>https://blog.hoge.cc/posts/hitcon-ctf-2024-quals</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/hitcon-ctf-2024-quals</guid>
             <pubDate>Tue, 16 Jul 2024 11:53:00 GMT</pubDate>
             <description><![CDATA[
 I participated in HITCON CTF 2024 Quals as a member of TokyoWesterns. Our team placed 4th and advanced to the finals.
@@ -102,7 +129,7 @@ It uses Python's [tarfile](https://docs.python.org/3/library/tar]]></description
         <item>
             <title><![CDATA[Midnight Sun CTF 2024 Finals]]></title>
             <link>https://blog.hoge.cc/posts/midnight-sun-ctf-2024-finals</link>
-            <guid>https://blog.hoge.cc/posts/midnight-sun-ctf-2024-finals</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/midnight-sun-ctf-2024-finals</guid>
             <pubDate>Thu, 20 Jun 2024 19:15:00 GMT</pubDate>
             <description><![CDATA[
 On June 15th and 16th, I participated in the Midnight Sun CTF 2024 Finals in Stockholm as a member of TokyoWesterns, and we won first place.
@@ -117,7 +144,7 @@ It was a program that repeatedly performed multiplication and exponentiation of 
         <item>
             <title><![CDATA[zer0pts CTF Writeup]]></title>
             <link>https://blog.hoge.cc/posts/zer0pts-ctf-writeup</link>
-            <guid>https://blog.hoge.cc/posts/zer0pts-ctf-writeup</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/zer0pts-ctf-writeup</guid>
             <pubDate>Mon, 09 Mar 2020 13:55:00 GMT</pubDate>
             <description><![CDATA[
 チーム TokyoWesterns で参加。最終 3 位。わたしは diysig 以外の暗号問題を解いた。
@@ -135,12 +162,13 @@ $N$は偶数であることから、 $\mathrm{ROR}(m,i)^e \bmod n \bmod 2 = \mat
 したがって、下位 1bit を順に見ていくと元もメッセージ m が求まる。
 
 
+`ruby
 irb(main):001:0> [File.read('chall.txt').lines.map{|a|a.to_i%2}.join.reverse.to_i(2).to_s(16)].pack('H*]]></description>
         </item>
         <item>
             <title><![CDATA[SECCON CTF 2019 Quals Writeup]]></title>
             <link>https://blog.hoge.cc/posts/seccon-ctf-2019-quals-writeup</link>
-            <guid>https://blog.hoge.cc/posts/seccon-ctf-2019-quals-writeup</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/seccon-ctf-2019-quals-writeup</guid>
             <pubDate>Mon, 21 Oct 2019 12:44:00 GMT</pubDate>
             <description><![CDATA[
 個人で参加して 35 位。取り組めた時間が少なかったとはいえ、もうちょっとフラグを取りたかったところ。
@@ -176,7 +204,7 @@ https://gist.github.com/nomeaning777/99a24af4ed90355ba7cf567278f6b8f9
         <item>
             <title><![CDATA[Google Capture The Flag 2019 (Quals) Writeup]]></title>
             <link>https://blog.hoge.cc/posts/google-ctf-2019-quals-writeup</link>
-            <guid>https://blog.hoge.cc/posts/google-ctf-2019-quals-writeup</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/google-ctf-2019-quals-writeup</guid>
             <pubDate>Wed, 26 Jun 2019 20:31:00 GMT</pubDate>
             <description><![CDATA[
 Quantum Key Distribution (Crypto 92pts)
@@ -186,6 +214,7 @@ BB84) がサーバー上に実装されている。ユーザーは鍵配送の�
 ソースコードがないため、“announcement”がどのようにエンコードされているか不明だったが、鍵配送の結果の共有鍵とフラグの暗号鍵を XOR したものが正解であった。
 
 
+`ruby
 def rotate(c)
     c * Complex(0.707, -0.707)
 end
@@ -197,7 +226,7 @@ def mesure(rx_qubits, basis)
         <item>
             <title><![CDATA[BCTF 2019 Writeup]]></title>
             <link>https://blog.hoge.cc/posts/bctf2019-writeup</link>
-            <guid>https://blog.hoge.cc/posts/bctf2019-writeup</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/bctf2019-writeup</guid>
             <pubDate>Fri, 07 Jun 2019 13:46:00 GMT</pubDate>
             <description><![CDATA[
 trispl
@@ -231,7 +260,7 @@ r1 の復元
         <item>
             <title><![CDATA[SECCON Beginners CTF 2019 Writeup]]></title>
             <link>https://blog.hoge.cc/posts/seccon-beginers-ctf-2019-writeup</link>
-            <guid>https://blog.hoge.cc/posts/seccon-beginers-ctf-2019-writeup</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/seccon-beginers-ctf-2019-writeup</guid>
             <pubDate>Sun, 26 May 2019 13:47:00 GMT</pubDate>
             <description><![CDATA[
 個人で参加して 3 位。secconpass のフラグの Guess に失敗した結果 2 位を逃したのがちょっとだけ悔しい。
@@ -255,12 +284,13 @@ katsudon (Web 101pts)
 Rails のバージョンから CVE-2019-5418 と推測したのは良いが、フラグページで得られた署名付き文字列の前半の Base64 をデコードしてみたら平文で保存されていた。
 
 
+`text
 $ echo -n BAh]]></description>
         </item>
         <item>
             <title><![CDATA[Harekaze CTF 2019 Writeup]]></title>
             <link>https://blog.hoge.cc/posts/harekaze-ctf-2019-writeup</link>
-            <guid>https://blog.hoge.cc/posts/harekaze-ctf-2019-writeup</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/harekaze-ctf-2019-writeup</guid>
             <pubDate>Thu, 23 May 2019 10:37:00 GMT</pubDate>
             <description><![CDATA[
 ONCE UPON A TIME (Crypto 100pts)
@@ -269,6 +299,7 @@ ONCE UPON A TIME (Crypto 100pts)
 Mod 251 の上で連立方程式を解く。左から掛けたか右から掛けたかは分からないので両方試す。
 
 
+`python
 enc = 'ea5929e97ef77806bb43ec303f304673de19f7e68eddc347f3373ee4c0b662bc37764f74cbb8bb9219e7b5dbc59ca4a42018'
 enc = enc.decode('hex')
 G = GF(251)
@@ -287,7 +318,7 @@ M = ]]></description>
         <item>
             <title><![CDATA[ISUCON8 本戦 参加記録]]></title>
             <link>https://blog.hoge.cc/posts/isucon-2018</link>
-            <guid>https://blog.hoge.cc/posts/isucon-2018</guid>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/isucon-2018</guid>
             <pubDate>Sat, 03 Nov 2018 23:01:00 GMT</pubDate>
             <description><![CDATA[
 2018/10/20 に開催されたISUCON8本戦に，icchy，whywaitaと一緒のチーム「時差は最大の敵」で参加しました．
