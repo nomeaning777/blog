@@ -10,14 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4
-        name: Install pnpm
+      - uses: jdx/mise-action@eb2f5cb41b0a8175dad2f797e3daca6fe7795a19 # v2.4.2
         with:
-          run_install: false
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
+          install: true
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
