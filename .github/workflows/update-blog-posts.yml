@@ -1,6 +1,9 @@
 name: Update Blog Posts from Notion
 
 on:
+  push:
+    branches:
+      - claude/update-latest-articles-011CUfAVLMWvK8R7ksvsDBgA
   schedule:
     # Run daily at 00:00 UTC
     - cron: '0 0 * * *'
