@@ -11,7 +11,8 @@ import { useEffect } from "react";
 import { TwitterPreview } from "@/app/_components/twitter-preview";
 
 export default async function Post({ params }: Params) {
-	const post = getPostBySlug(params.slug);
+	const { slug } = await params;
+	const post = getPostBySlug(slug);
 
 	if (!post) {
 		return notFound();
@@ -34,13 +35,14 @@ export default async function Post({ params }: Params) {
 }
 
 type Params = {
-	params: {
+	params: Promise<{
 		slug: string;
-	};
+	}>;
 };
 
-export function generateMetadata({ params }: Params): Metadata {
-	const post = getPostBySlug(params.slug);
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+	const { slug } = await params;
+	const post = getPostBySlug(slug);
 
 	if (!post) {
 		return notFound();
