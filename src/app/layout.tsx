@@ -1,14 +1,11 @@
 import Footer from "@/app/_components/footer";
 import type { Metadata } from "next";
-import { Inter, BIZ_UDPGothic } from "next/font/google";
-import clsx from "clsx";
 import "katex/dist/katex.css";
 import "highlight.js/styles/default.css";
 import "github-markdown-css/github-markdown-light.css";
 
 import "./globals.css";
 import Header from "./_components/header";
-import { bizUdpGothic, inter } from "@/lib/fonts";
 import Script from "next/script";
 import { TwitterWidgetProvider } from "./_components/twitter-widget-provider";
 
@@ -26,11 +23,16 @@ export default function RootLayout({
 		<html lang="ja">
 			<head>
 				<meta name="theme-color" content="#000" />
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+				<link
+					href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@100..900&display=swap"
+					rel="stylesheet"
+				/>
 			</head>
 			<body
 				style={{
-					...bizUdpGothic.style,
-					fontFamily: `${inter.style.fontFamily},${bizUdpGothic.style.fontFamily}`,
+					fontFamily: 'Inter, "BIZ UDPGothic", sans-serif',
 				}}
 			>
 				<TwitterWidgetProvider>

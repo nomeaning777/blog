@@ -7,7 +7,6 @@ import Container from "@/app/_components/container";
 import Header from "@/app/_components/header";
 import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
-import { useEffect } from "react";
 import { TwitterPreview } from "@/app/_components/twitter-preview";
 
 export default async function Post({ params }: Params) {
