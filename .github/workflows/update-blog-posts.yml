@@ -50,10 +50,13 @@ jobs:
         if: steps.check_existing_pr.outputs.should_continue == 'true'
         id: check_changes
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
+          # Only check for changes in blog posts and assets, ignore RSS lastBuildDate updates
+          if [[ -n "$(git status --porcelain -- _posts/ public/assets/)" ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected in blog posts or assets"
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes in blog posts or assets (only RSS lastBuildDate updated)"
           fi
 
       - name: Create Pull Request
