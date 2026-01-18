@@ -4,11 +4,41 @@
         <title>nomeaning blog</title>
         <link>https://blog.hoge.cc</link>
         <description>undefined</description>
-        <lastBuildDate>Fri, 31 Oct 2025 11:52:16 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 18 Jan 2026 11:25:44 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
         <copyright>Copyright (c) 2024 nomeaning</copyright>
+        <item>
+            <title><![CDATA[SWIMMER OSINT CTF Writeup]]></title>
+            <link>https://blog.hoge.cc/posts/swimmer-osint-ctf-2026-writeup</link>
+            <guid isPermaLink="false">https://blog.hoge.cc/posts/swimmer-osint-ctf-2026-writeup</guid>
+            <pubDate>Sun, 18 Jan 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+初心者向けのOSINT CTFであるSUMMER OSINT CTFにチームHSF(ソロ)で参加しました。全問解くことができましたが、時間がかかり最終61位でした。
+
+
+OSINTに関しては入門者ですが、楽しく参加することが出来ました。
+
+
+以下はWriteupです。
+
+tgt_rain
+
+rain_01_social 
+
+
+rainのXのスクリーンショットが渡される。ユーザー名は隠れているが、Xでメッセージを検索することでrainのXのアカウントID(@bruto_rain)を特定した。
+さらにXのプロフィールからrainのブログ (https://brutorain.wordpress.com )を特定した。今後の問題ではこれに関する調査を行なっていくことになる。
+
+rain_04_source2
+
+
+問題文で言われている2番目に作成した偽記事というのは「誰も知らない真実を発見」というタイトルの記事のこと。
+
+
+Google画像検索でこの画像が乗っている記事を見つけ、その出典]]></description>
+        </item>
         <item>
             <title><![CDATA[痔瘻の手術を受けた]]></title>
             <link>https://blog.hoge.cc/posts/2025-surgical-operation-for-ji</link>
