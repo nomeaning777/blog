@@ -7,12 +7,6 @@ const Header = () => {
 				<Link href="/" className="hover:underline">
 					Blog
 				</Link>
-				<Link
-					href="/alpacahack-daily/"
-					className="self-end text-sm hover:underline"
-				>
-					Alpacahack Daily Writeup
-				</Link>
 			</nav>
 		</header>
 	);

@@ -11,7 +11,7 @@ export default function AlpacahackDailyIndex() {
 			<Container>
 				<div className="max-w-2xl mx-auto">
 					<h1 className="text-4xl font-bold tracking-tight mb-8">
-						Alpacahack Daily
+						Alpacahack Daily Writeup
 					</h1>
 					<section className="mb-12">
 						<h2 className="text-2xl font-bold mt-8 mb-4">Daily</h2>
