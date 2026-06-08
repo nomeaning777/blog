@@ -27,6 +27,12 @@ export default function Index() {
 	return (
 		<main>
 			<Container>
+				<Link
+					href="/alpacahack-daily/"
+					className="text-blue-600 hover:underline"
+				>
+					Alpacahack Daily Writeup
+				</Link>
 				{allPosts.map((year) => (
 					<div key={year.year}>
 						<h2 className="text-3xl mt-8 mb-4 leading-snug">{year.year}</h2>
