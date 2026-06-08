@@ -13,9 +13,9 @@ export default function AlpacahackDailyIndex() {
 					<h1 className="text-4xl font-bold tracking-tight mb-8">
 						Alpacahack Daily Writeup
 					</h1>
-					<section className="mb-12">
-						<h2 className="text-2xl font-bold mt-8 mb-4">Daily</h2>
-						{dailyPosts.length > 0 ? (
+					{dailyPosts.length > 0 && (
+						<section className="mb-12">
+							<h2 className="text-2xl font-bold mt-8 mb-4">Daily</h2>
 							<ul>
 								{dailyPosts.map((post) => (
 									<li key={post.slug}>
@@ -29,10 +29,8 @@ export default function AlpacahackDailyIndex() {
 									</li>
 								))}
 							</ul>
-						) : (
-							<p className="text-gray-600">No Daily posts yet.</p>
-						)}
-					</section>
+						</section>
+					)}
 					<section className="mb-12">
 						<h2 className="text-2xl font-bold mt-8 mb-4">B-Side</h2>
 						{bsidePosts.length > 0 ? (
