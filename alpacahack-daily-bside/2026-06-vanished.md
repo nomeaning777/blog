@@ -1,5 +1,5 @@
 ---
-title: Alpacahack Daily B-SIDE 2026-06 vanished Writeup
+title: vanished Writeup
 ---
 
 permission denied 3のようにファイルを残す方針は厳しそうである。  
